@@ -27,7 +27,7 @@ export const useShopsData = () => {
       console.log("set query");
       console.log(queryParams);
       const response = await axios.get(
-        `https://suguguru-219i0gs03-yoshitakakyougoku.vercel.app/api/hotpepper`,
+        `https://suguguru.vercel.app/api/hotpepper`,
         {
           params: {
             lat: lat,
