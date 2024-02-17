@@ -18,6 +18,7 @@ export const useShopsData = () => {
     lng: string;
     range: string;
     id: string;
+    start: string;
   };
 
   // APIからデータをフェッチしてshopsに格納する関数
@@ -34,9 +35,9 @@ export const useShopsData = () => {
             lng: lng,
             range: range,
             id: id,
+          start: start,
           }, // APIリクエストにクエリパラメータを含める
-        }
-      );
+      });
       setShops(response.data);
     } catch (e) {
       console.error(e);
