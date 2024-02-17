@@ -25,18 +25,18 @@ export const useShopsData = () => {
   const fetchAndSetShops = useCallback(async (queryParams: QueryParams) => {
     try {
       const { lat, lng, range, id, start } = queryParams;
+      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "";
       console.log("set query");
       console.log(queryParams);
-      const response = await axios.get(
-        `https://suguguru.vercel.app/api/hotpepper`,
-        {
-          params: {
-            lat: lat,
-            lng: lng,
-            range: range,
-            id: id,
+      console.log(baseUrl);
+      const response = await axios.get(`${baseUrl}api/hotpepper`, {
+        params: {
+          lat: lat,
+          lng: lng,
+          range: range,
+          id: id,
           start: start,
-          }, // APIリクエストにクエリパラメータを含める
+        }, // APIリクエストにクエリパラメータを含める
       });
       setShops(response.data);
     } catch (e) {
