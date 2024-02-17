@@ -26,14 +26,17 @@ export const useShopsData = () => {
       const { lat, lng, range, id } = queryParams;
       console.log("set query");
       console.log(queryParams);
-      const response = await axios.get(`http://localhost:3000/api/hotpepper`, {
-        params: {
-          lat: lat,
-          lng: lng,
-          range: range,
-          id: id,
-        }, // APIリクエストにクエリパラメータを含める
-      });
+      const response = await axios.get(
+        `https://suguguru-219i0gs03-yoshitakakyougoku.vercel.app/api/hotpepper`,
+        {
+          params: {
+            lat: lat,
+            lng: lng,
+            range: range,
+            id: id,
+          }, // APIリクエストにクエリパラメータを含める
+        }
+      );
       setShops(response.data);
     } catch (e) {
       console.error(e);
