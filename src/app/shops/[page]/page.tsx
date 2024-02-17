@@ -1,40 +1,29 @@
 "use client";
 import ShopsHeader from "@/components/header/shopsHeader";
 import ShopMap from "@/components/map";
-import MyMap from "@/components/map";
 import Marker from "@/components/marker";
-import Search from "@/components/search/search";
 import { useShopsData } from "@/hooks/useShopsData";
+import Link from "next/link";
 import {
   Card,
-  CardHeader,
   CardBody,
   CardFooter,
   Image,
   Stack,
   Heading,
   Text,
-  Button,
   Box,
   Center,
-  Link,
+  Flex,
 } from "@chakra-ui/react";
+import { ChevronRightIcon, ChevronLeftIcon } from "@chakra-ui/icons";
 import { Status, Wrapper } from "@googlemaps/react-wrapper";
-import NextLink from "next/link";
 import { useParams, useSearchParams } from "next/navigation";
 import { useEffect, useMemo } from "react";
 const render = (status: Status) => {
   return <h1>{status}</h1>;
 };
 export default function Shops() {
-  // const shops = [
-  //   { name: "お好み焼き まるも" },
-  //   { name: "バー 岩田" },
-  //   { name: "不動坂 菊地" },
-  //   { name: "お好み焼き まるも" },
-  //   { name: "バー 岩田" },
-  //   { name: "不動坂 菊地" },
-  // ];
   const searchParams = useSearchParams();
   const params = useParams();
   const page = Number(params?.page[0]);
@@ -48,8 +37,9 @@ export default function Shops() {
       lng: lng || "",
       range: range || "",
       id: "",
+      start: String(page * 10),
     }),
-    [lat, lng, range]
+    [lat, lng, range, page]
   );
 
   useEffect(() => {
@@ -62,6 +52,51 @@ export default function Shops() {
   return (
     <>
       <ShopsHeader lat={Number(lat)} lng={Number(lng)} />
+      <Center>
+        <Flex alignItems={"center"}>
+          {page > 1 ? (
+            <Box>
+              <Link
+                href={{
+                  pathname: `/shops/${page - 1}`,
+                  query: {
+                    lat: lat,
+                    lng: lng,
+                    range: range,
+                  },
+                }}
+              >
+                <ChevronLeftIcon />
+              </Link>
+            </Box>
+          ) : (
+            <span style={{ opacity: 0.5 }}>
+              <ChevronLeftIcon />
+            </span> // クリック不可のスタイル
+          )}
+          <div>{page}</div>
+          {(Number(page) + 1) * 10 < shops.results.results_available ? (
+            <Flex alignItems={"center"}>
+              <Link
+                href={{
+                  pathname: `/shops/${page + 1}`,
+                  query: {
+                    lat: lat,
+                    lng: lng,
+                    range: range,
+                  },
+                }}
+              >
+                <ChevronRightIcon />
+              </Link>
+            </Flex>
+          ) : (
+            <span style={{ opacity: 0.5 }}>
+              <ChevronRightIcon />
+            </span>
+          )}
+        </Flex>
+      </Center>
       <Center w={"100%"}>
         <Box w={"80%"}>
           {shops.results.shop.map((shop, index) => (
@@ -81,9 +116,7 @@ export default function Shops() {
                 <Stack w={"50%"}>
                   <CardBody>
                     <Heading size="md">
-                      <Link as={NextLink} href={`/shop/${shop.id}`}>
-                        {shop.name}
-                      </Link>
+                      <Link href={`/shop/${shop.id}`}>{shop.name}</Link>
                     </Heading>
                     <Stack></Stack>
                     <Text py="2">{shop.access}</Text>
