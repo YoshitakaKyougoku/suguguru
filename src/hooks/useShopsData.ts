@@ -6,10 +6,9 @@ export const useShopsData = () => {
   console.log("useShopsData");
   const [shops, setShops] = useState<HotpepperResponse>({
     results: {
-      apiVersion: "",
-      resultsAvailable: 0,
-      resultsReturned: "",
-      resultsStart: 0,
+      api_version: "",
+      results_available: 0,
+      results_start: 0,
       shop: [],
     },
   });
