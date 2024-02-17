@@ -18,6 +18,7 @@ import { useEffect } from "react";
 import { Status, Wrapper } from "@googlemaps/react-wrapper";
 import Marker from "@/components/marker";
 import ShopMap from "@/components/map";
+import Link from "next/link";
 const render = (status: Status) => {
   return <h1>{status}</h1>;
 };
@@ -32,6 +33,7 @@ export default function Home() {
         lng: String(coords.longitude) || "",
         range: "1",
         id: "",
+        start: "1",
       });
     }
   }, [coords, error, fetchAndSetShops]);
@@ -84,7 +86,9 @@ export default function Home() {
                     alt={shop.id}
                   ></Image>
                   <Flex>
-                    <CardBody>{shop.name}</CardBody>
+                    <CardBody>
+                      <Link href={`/shop/${shop.id}`}>{shop.name}</Link>
+                    </CardBody>
                     <CardFooter>{shop.catch}</CardFooter>
                   </Flex>
                 </Card>
