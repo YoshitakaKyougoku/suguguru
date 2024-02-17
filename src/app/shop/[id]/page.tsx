@@ -15,6 +15,7 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { Status, Wrapper } from "@googlemaps/react-wrapper";
+import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect, useMemo } from "react";
 const render = (status: Status) => {
@@ -49,6 +50,7 @@ export default function Shop() {
   }
   return (
     <Box>
+      <Link href="/">HOME</Link>
       <Center w={"100vw"} h={"100vh"}>
         <Box w={"80%"} h={"100%"} bg={"#F8C3C3"} p={2}>
           <Card h={"100%"} w={"100%"}>
