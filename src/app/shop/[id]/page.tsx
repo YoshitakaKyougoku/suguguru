@@ -33,6 +33,7 @@ export default function Shop() {
       lng: "",
       range: "",
       id: id,
+      start: "",
     }),
     [id]
   );
