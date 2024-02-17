@@ -24,7 +24,7 @@ export const useShopsData = () => {
   // APIからデータをフェッチしてshopsに格納する関数
   const fetchAndSetShops = useCallback(async (queryParams: QueryParams) => {
     try {
-      const { lat, lng, range, id } = queryParams;
+      const { lat, lng, range, id, start } = queryParams;
       console.log("set query");
       console.log(queryParams);
       const response = await axios.get(
