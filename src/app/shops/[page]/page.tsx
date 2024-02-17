@@ -37,7 +37,7 @@ export default function Shops() {
       lng: lng || "",
       range: range || "",
       id: "",
-      start: String(page * 10),
+      start: String(1 + (page - 1) * 10),
     }),
     [lat, lng, range, page]
   );
