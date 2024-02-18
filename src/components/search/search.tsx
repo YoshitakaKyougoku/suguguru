@@ -26,7 +26,7 @@ export default function Search(searchProps: SearchProps) {
     fontSize: "sm",
   };
   return (
-    <Box p={3} borderRadius={"md"} w={"100%"} bg={"#4C4C4C"} color={"white"}>
+    <Box px={4} borderRadius={"md"} w={"100%"} bg={"#4C4C4C"} color={"white"}>
       <Flex justifyContent="space-between">
         <Center p={2} w={"90%"}>
           <Center>
