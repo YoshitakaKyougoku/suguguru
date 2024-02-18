@@ -12,7 +12,7 @@ import {
   Flex,
   Heading,
   Image,
-  Stack,
+  Spinner,
 } from "@chakra-ui/react";
 import { Status, Wrapper } from "@googlemaps/react-wrapper";
 import Link from "next/link";
@@ -47,7 +47,12 @@ export default function Shop() {
     lng: shop.lng,
   })) as google.maps.LatLngLiteral[];
   if (!shops.results.shop[0]) {
-    return <div>店舗データを取得中&hellip;</div>;
+    return (
+      <Center>
+        店舗データを取得中&hellip;
+        <Spinner />
+      </Center>
+    );
   }
   return (
     <Box>

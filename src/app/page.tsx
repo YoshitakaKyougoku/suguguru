@@ -10,6 +10,7 @@ import {
   CardBody,
   CardFooter,
   Stack,
+  Spinner,
 } from "@chakra-ui/react";
 import Search from "@/components/search/search";
 import { useShopsData } from "@/hooks/useShopsData";
@@ -31,7 +32,7 @@ export default function Home() {
       fetchAndSetShops({
         lat: String(coords.latitude) || "",
         lng: String(coords.longitude) || "",
-        range: "1",
+        range: "2",
         id: "",
         start: "1",
       });
@@ -41,10 +42,20 @@ export default function Home() {
     return <div>{error}</div>;
   }
   if (!coords) {
-    return <div>位置データを取得中&hellip;</div>;
+    return (
+      <Center>
+        位置データを取得中&hellip;
+        <Spinner />
+      </Center>
+    );
   }
-  if (!shops.results.shop) {
-    return <div>店舗データを取得中&hellip;</div>;
+  if (!shops.results.shop[0]) {
+    return (
+      <Center>
+        店舗データを取得中&hellip;
+        <Spinner />
+      </Center>
+    );
   }
   const userPosition = {
     lat: coords?.latitude,

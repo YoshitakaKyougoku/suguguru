@@ -1,23 +1,8 @@
 "use client";
 import ShopsHeader from "@/components/header/shopsHeader";
-import ShopMap from "@/components/map";
-import Marker from "@/components/marker";
 import { useShopsData } from "@/hooks/useShopsData";
-import Link from "next/link";
-import {
-  Card,
-  CardBody,
-  CardFooter,
-  Image,
-  Stack,
-  Heading,
-  Text,
-  Box,
-  Center,
-  Flex,
-} from "@chakra-ui/react";
-import { ChevronRightIcon, ChevronLeftIcon } from "@chakra-ui/icons";
-import { Status, Wrapper } from "@googlemaps/react-wrapper";
+import { Center, Spinner } from "@chakra-ui/react";
+
 import { useParams, useSearchParams } from "next/navigation";
 import { useEffect, useMemo } from "react";
 const render = (status: Status) => {
@@ -49,53 +34,11 @@ export default function Shops() {
     lat: shop.lat,
     lng: shop.lng,
   })) as google.maps.LatLngLiteral[];
+  if (!shops.results.shop[0]) {
   return (
-    <>
-      <ShopsHeader lat={Number(lat)} lng={Number(lng)} />
       <Center>
-        <Flex alignItems={"center"}>
-          {page > 1 ? (
-            <Box>
-              <Link
-                href={{
-                  pathname: `/shops/${page - 1}`,
-                  query: {
-                    lat: lat,
-                    lng: lng,
-                    range: range,
-                  },
-                }}
-              >
-                <ChevronLeftIcon />
-              </Link>
-            </Box>
-          ) : (
-            <span style={{ opacity: 0.5 }}>
-              <ChevronLeftIcon />
-            </span> // クリック不可のスタイル
-          )}
-          <div>{page}</div>
-          {(Number(page) + 1) * 10 < shops.results.results_available ? (
-            <Flex alignItems={"center"}>
-              <Link
-                href={{
-                  pathname: `/shops/${page + 1}`,
-                  query: {
-                    lat: lat,
-                    lng: lng,
-                    range: range,
-                  },
-                }}
-              >
-                <ChevronRightIcon />
-              </Link>
-            </Flex>
-          ) : (
-            <span style={{ opacity: 0.5 }}>
-              <ChevronRightIcon />
-            </span>
-          )}
-        </Flex>
+        店舗データを取得中
+        <Spinner />
       </Center>
       <Center w={"100%"}>
         <Box w={"80%"}>
