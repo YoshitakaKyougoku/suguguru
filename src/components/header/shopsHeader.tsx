@@ -1,9 +1,15 @@
-import { Box, Container, Flex, Link } from "@chakra-ui/react";
+import { Box, Container, Flex, Link, Image, Center } from "@chakra-ui/react";
 import Search from "@/components/search/search";
 import NextLink from "next/link";
 import { SearchProps } from "@/types/searchProps";
 
-export default function ShopsHeader(searchProps: SearchProps) {
+interface HeaderProps extends SearchProps {
+  page: number;
+  resultsAvailable: number;
+}
+
+export default function ShopsHeader(headerProps: HeaderProps) {
+  const { lat, lng, page, resultsAvailable } = headerProps;
   return (
     <Box px={1} bgColor="#F8C3C3">
       <Container maxW="container.lg">
@@ -25,10 +31,17 @@ export default function ShopsHeader(searchProps: SearchProps) {
               />
             </a>
             <Center mx={3} p={1} borderRadius={"md"} bg={"white"}>
-          <Link as={NextLink} href="/">
-            HOME
-          </Link>
+              <Link as={NextLink} href="/">
+                HOME
+              </Link>
             </Center>
+          </Box>
+          <Search lat={lat} lng={lng} />
+          <Box w={100}>
+            {resultsAvailable} 件中
+            {1 + (page - 1) * 10}〜
+            {resultsAvailable < page * 10 ? resultsAvailable : page * 10}
+            件表示
           </Box>
         </Flex>
       </Container>
