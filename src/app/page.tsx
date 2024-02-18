@@ -110,7 +110,17 @@ export default function Home() {
                   ></Image>
                   <Flex>
                     <CardBody>
-                      <Link href={`/shop/${shop.id}`}>{shop.name}</Link>
+                      <Link
+                        href={{
+                          pathname: `/shop/${shop.id}`,
+                          query: {
+                            lat: String(userPosition.lat),
+                            lng: String(userPosition.lng),
+                          },
+                        }}
+                      >
+                        {shop.name}
+                      </Link>
                     </CardBody>
                     <CardFooter>{shop.catch}</CardFooter>
                   </Flex>
