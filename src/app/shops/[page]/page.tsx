@@ -40,55 +40,37 @@ export default function Shops() {
         店舗データを取得中
         <Spinner />
       </Center>
-      <Center w={"100%"}>
-        <Box w={"80%"}>
-          {shops.results.shop.map((shop, index) => (
-            <Box w={"100%"} h={"40%"} p={2} m={2} bg={"#F8C3C3"} key={index}>
-              <Card
-                direction={{ base: "column", sm: "row" }}
-                overflow="hidden"
-                variant="outline"
-              >
-                <Image
-                  objectFit="cover"
-                  maxW={{ base: "100%", sm: "200px" }}
-                  src={shop.photo.pc.l}
-                  alt="shop image"
-                />
+    );
+  }
+  return (
+    <>
+      <ShopsHeader
+        lat={Number(lat)}
+        lng={Number(lng)}
+        page={page}
+        resultsAvailable={resultsAvailable}
+      />
 
-                <Stack w={"50%"}>
-                  <CardBody>
-                    <Heading size="md">
-                      <Link href={`/shop/${shop.id}`}>{shop.name}</Link>
-                    </Heading>
-                    <Stack></Stack>
-                    <Text py="2">{shop.access}</Text>
-                    <Text py="2">{shop.open}</Text>
-                  </CardBody>
-                </Stack>
-                <CardFooter>
-                  <Box h={"100%"}>
-                    <Wrapper
-                      apiKey={"AIzaSyAUsgbJtYrh3G_hgHRfBndftkJqSQSEvNc"}
-                      render={render}
-                    >
-                      <ShopMap
-                        style={{ height: "100%", aspectRatio: "1 / 1" }}
-                        center={shopPositions[index]}
-                      >
-                        <Marker
-                          position={shopPositions[index]}
-                          title={shop.name}
-                        />
-                      </ShopMap>
-                    </Wrapper>
-                  </Box>
-                </CardFooter>
-              </Card>
-            </Box>
-          ))}
-        </Box>
-      </Center>
+      <PageNation
+        page={page}
+        resultsAvailable={resultsAvailable}
+        lat={lat}
+        lng={lng}
+        range={range}
+      />
+      <ShopList
+        shops={shops}
+        shopPositions={shopPositions}
+        userPosition={userPosition}
+      />
+
+      <PageNation
+        page={page}
+        resultsAvailable={resultsAvailable}
+        lat={lat}
+        lng={lng}
+        range={range}
+      />
     </>
   );
 }
