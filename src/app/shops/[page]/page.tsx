@@ -12,9 +12,9 @@ export default function Shops() {
   const searchParams = useSearchParams();
   const params = useParams();
   const page = Number(params?.page[0]);
-  const lat = searchParams?.get("lat") ?? undefined;
-  const lng = searchParams?.get("lng") ?? undefined;
-  const range = searchParams?.get("range") ?? undefined;
+  const lat = searchParams?.get("lat") || "";
+  const lng = searchParams?.get("lng") || "";
+  const range = searchParams?.get("range") || "";
   const { shops, fetchAndSetShops } = useShopsData();
   const searchQuery = useMemo(
     () => ({
@@ -31,6 +31,10 @@ export default function Shops() {
     fetchAndSetShops(searchQuery);
   }, [fetchAndSetShops, searchQuery]);
   const resultsAvailable = shops.results.results_available;
+  const userPosition = {
+    lat: Number(lat),
+    lng: Number(lng),
+  } as google.maps.LatLngLiteral;
   const shopPositions = shops.results.shop.map((shop) => ({
     lat: shop.lat,
     lng: shop.lng,
