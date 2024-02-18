@@ -72,6 +72,18 @@ export default function Home() {
         <Text as="b" fontSize="2xl">
           すぐグル
         </Text>
+        <Box>
+          <a href="http://webservice.recruit.co.jp/">
+            <Image
+              src="http://webservice.recruit.co.jp/banner/hotpepper-s.gif"
+              alt="ホットペッパーグルメ Webサービス"
+              width="135"
+              height="17"
+              border="0"
+              title="ホットペッパーグルメ Webサービス"
+            />
+          </a>
+        </Box>
       </Center>
       <Box mx={10}>
         <Search lat={coords?.latitude} lng={coords?.longitude} />

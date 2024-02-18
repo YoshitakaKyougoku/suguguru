@@ -110,6 +110,10 @@ export default function Shop() {
                   ></ShopMap>
                 </Wrapper>
               </Box>
+              Powered by{" "}
+              <a href="http://webservice.recruit.co.jp/" target="_blank">
+                ホットペッパーグルメ Webサービス
+              </a>
             </CardBody>
           </Card>
         </Box>

@@ -13,10 +13,23 @@ export default function ShopsHeader(searchProps: SearchProps) {
           justifyContent="space-between"
           alignItems="center"
         >
+          <Box>
+            <a href="http://webservice.recruit.co.jp/">
+              <Image
+                src="http://webservice.recruit.co.jp/banner/hotpepper-s.gif"
+                alt="ホットペッパーグルメ Webサービス"
+                width="135"
+                height="17"
+                border="0"
+                title="ホットペッパーグルメ Webサービス"
+              />
+            </a>
+            <Center mx={3} p={1} borderRadius={"md"} bg={"white"}>
           <Link as={NextLink} href="/">
             HOME
           </Link>
-          <Search lat={searchProps.lat} lng={searchProps.lng} />
+            </Center>
+          </Box>
         </Flex>
       </Container>
     </Box>
