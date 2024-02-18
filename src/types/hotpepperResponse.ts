@@ -37,6 +37,7 @@ export type Shop = {
     average: string;
   };
   catch: string;
+  capacity: number;
   access: string;
   photo: {
     pc: {
@@ -46,4 +47,7 @@ export type Shop = {
     };
   };
   open: string;
+  urls: {
+    pc: string;
+  };
 };
