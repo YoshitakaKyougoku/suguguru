@@ -67,7 +67,6 @@ export default function Shop() {
   }
   return (
     <Box>
-      <Link href="/">HOME</Link>
       <Center w={"100vw"} h={"100vh"}>
         <Box w={"80%"} h={"100%"} bg={"#F8C3C3"} p={2}>
           <Card h={"100%"} w={"100%"}>
@@ -89,9 +88,9 @@ export default function Shop() {
                       alt="shop logo"
                       src={shops.results.shop[0].logo_image}
                     />
-                <Heading>{shops.results.shop[0].name}</Heading>
+                    <Heading>{shops.results.shop[0].name}</Heading>
                   </Flex>
-              </Center>
+                </Center>
               </Flex>
               <TableContainer>
                 <Table variant="simple">
@@ -99,7 +98,7 @@ export default function Shop() {
                     <Tr>
                       <Td>
                         <Badge mx={1} variant="outline" colorScheme="green">
-                    ジャンル
+                          ジャンル
                         </Badge>
                       </Td>
                       <Td>
@@ -107,7 +106,7 @@ export default function Shop() {
                           {shops.results.shop[0].genre.name}
                         </Badge>
                         <Badge mx={1} colorScheme="green">
-                    {shops.results.shop[0].genre.catch}
+                          {shops.results.shop[0].genre.catch}
                         </Badge>
                       </Td>
                     </Tr>
@@ -138,7 +137,7 @@ export default function Shop() {
                     <Tr>
                       <Th>
                         <Badge mx={1} variant="outline">
-                    営業時間
+                          営業時間
                         </Badge>
                       </Th>
                       <Th>
@@ -165,15 +164,15 @@ export default function Shop() {
                 </Link>
               </Box>
               <Flex w={"100%"}>
-              <Image alt="shop icon" src={shops.results.shop[0].photo.pc.l} />
+                <Image alt="shop icon" src={shops.results.shop[0].photo.pc.l} />
                 <Box h={"100%"} w={"100%"}>
-                <Wrapper
-                  apiKey={"AIzaSyAUsgbJtYrh3G_hgHRfBndftkJqSQSEvNc"}
-                  render={render}
-                >
-                  <ShopMap
+                  <Wrapper
+                    apiKey={"AIzaSyAUsgbJtYrh3G_hgHRfBndftkJqSQSEvNc"}
+                    render={render}
+                  >
+                    <ShopMap
                       style={{ height: "100%", aspectRatio: "3 / 1" }}
-                    center={shopPositions[0]}
+                      center={shopPositions[0]}
                     >
                       <Marker
                         userPosition={userPosition}
@@ -181,8 +180,8 @@ export default function Shop() {
                         title={shops.results.shop[0].name}
                       />
                     </ShopMap>
-                </Wrapper>
-              </Box>
+                  </Wrapper>
+                </Box>
               </Flex>
               Powered by{" "}
               <a href="http://webservice.recruit.co.jp/" target="_blank">
