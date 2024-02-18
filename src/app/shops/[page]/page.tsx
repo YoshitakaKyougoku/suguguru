@@ -40,7 +40,7 @@ export default function Shops() {
     lng: shop.lng,
   })) as google.maps.LatLngLiteral[];
   if (!shops.results.shop[0]) {
-  return (
+    return (
       <Center>
         店舗データを取得中
         <Spinner />
