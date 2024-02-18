@@ -23,16 +23,17 @@ import {
 } from "@chakra-ui/react";
 import { Status, Wrapper } from "@googlemaps/react-wrapper";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import { useEffect, useMemo } from "react";
 const render = (status: Status) => {
   return <h1>{status}</h1>;
 };
 export default function Shop() {
+  const searchParams = useSearchParams();
+  const lat = searchParams?.get("lat") || "";
+  const lng = searchParams?.get("lng") || "";
   const params = useParams();
   const id = Array.isArray(params?.id) ? params.id[0] : params?.id || "";
-  // console.log(id);
-  // console.log(Array.isArray(params?.id));
   const { shops, fetchAndSetShops } = useShopsData();
   const searchQuery = useMemo(
     () => ({
@@ -44,7 +45,10 @@ export default function Shop() {
     }),
     [id]
   );
-
+  const userPosition = {
+    lat: Number(lat),
+    lng: Number(lng),
+  };
   useEffect(() => {
     fetchAndSetShops(searchQuery);
   }, [fetchAndSetShops, searchQuery]);
