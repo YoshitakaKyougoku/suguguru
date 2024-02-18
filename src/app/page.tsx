@@ -6,7 +6,6 @@ import {
   Text,
   Flex,
   Card,
-  CardHeader,
   CardBody,
   CardFooter,
   Stack,
@@ -68,9 +67,9 @@ export default function Home() {
   })) as google.maps.LatLngLiteral[];
   return (
     <Box w={"100vw"} h={"100vh"} bg={"#F8C3C3"} p={"3"} overflow={"hidden"}>
-      <Center p={6}>
+      <Center p={3}>
         <Text as="b" fontSize="2xl">
-          すぐグル
+          すぐグル{" "}
         </Text>
         <Box>
           <a href="http://webservice.recruit.co.jp/">
@@ -131,17 +130,17 @@ export default function Home() {
           </Stack>
         </Box>
       </Center>
-
       <Box mx={"auto"}>
-        <Wrapper
-          apiKey={"AIzaSyAUsgbJtYrh3G_hgHRfBndftkJqSQSEvNc"}
-          render={render}
-        >
-          <Center w={"100%"}>
-            <Box w={"80%"}>
+        <Center w={"100%"}>
+          <Box w={"80%"}>
+            <Wrapper
+              apiKey={"AIzaSyAUsgbJtYrh3G_hgHRfBndftkJqSQSEvNc"}
+              render={render}
+            >
               <ShopMap
                 style={{ width: "100%", aspectRatio: "1 / 1" }}
                 center={shopPositions[0]}
+                zoom={12.0}
               >
                 {/* <Marker position={userPosition} icon={'.././favicon.ico'}/> */}
                 {shops.results.shop.slice(0, 3).map((shop, index) => (
@@ -149,12 +148,13 @@ export default function Home() {
                     key={index}
                     position={shopPositions[index]}
                     title={shop.name}
+                    userPosition={userPosition}
                   />
                 ))}
               </ShopMap>
-            </Box>
-          </Center>
-        </Wrapper>
+            </Wrapper>
+          </Box>
+        </Center>
       </Box>
     </Box>
   );
