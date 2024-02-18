@@ -5,9 +5,9 @@ import { Center, Spinner } from "@chakra-ui/react";
 
 import { useParams, useSearchParams } from "next/navigation";
 import { useEffect, useMemo } from "react";
-const render = (status: Status) => {
-  return <h1>{status}</h1>;
-};
+import PageNation from "@/components/shops/pageNation";
+import ShopList from "@/components/shops/shopList";
+
 export default function Shops() {
   const searchParams = useSearchParams();
   const params = useParams();
