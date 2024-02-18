@@ -30,6 +30,7 @@ export default function Shops() {
   useEffect(() => {
     fetchAndSetShops(searchQuery);
   }, [fetchAndSetShops, searchQuery]);
+  const resultsAvailable = shops.results.results_available;
   const shopPositions = shops.results.shop.map((shop) => ({
     lat: shop.lat,
     lng: shop.lng,
