@@ -8,10 +8,6 @@
 
 https://suguguru.vercel.app/
 
-### 該当プロジェクトのリポジトリ URL
-
-https://github.com/YoshitakaKyougoku/suguguru
-
 ## 開発環境
 
 ### 開発環境
@@ -52,11 +48,9 @@ Next.js (ver.14.1.0)
 
 ### 設計ドキュメント
 
-```plantuml
-!include screen-transition.puml
-```
+画面遷移図
 
-[画面遷移図](./screen-transition.puml)
+![画面遷移図](./screen-transition.png)
 
 #### コンセプト
 
