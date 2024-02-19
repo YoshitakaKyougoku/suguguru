@@ -6,12 +6,9 @@ import {
   Heading,
   Image,
   Table,
-  TableCaption,
   TableContainer,
   Tbody,
   Td,
-  Th,
-  Thead,
   Tr,
 } from "@chakra-ui/react";
 import Link from "next/link";
@@ -29,6 +26,7 @@ type ShopCardBodyProps = {
 };
 
 export default function ShopCardBody(props: ShopCardBodyProps) {
+  const mapApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY || "";
   const { shop, shopPosition, userPosition } = props;
   return (
     <CardBody overflow={"hidden"}>
@@ -56,10 +54,7 @@ export default function ShopCardBody(props: ShopCardBodyProps) {
       <Flex w={"100%"}>
         <Image alt="shop icon" src={shop.photo.pc.l} />
         <Box h={"100%"} w={"100%"}>
-          <Wrapper
-            apiKey={"AIzaSyAUsgbJtYrh3G_hgHRfBndftkJqSQSEvNc"}
-            render={render}
-          >
+          <Wrapper apiKey={mapApiKey} render={render}>
             <ShopMap
               style={{ height: "100%", aspectRatio: "3 / 1" }}
               center={shopPosition}

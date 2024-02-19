@@ -24,6 +24,7 @@ const render = (status: Status) => {
   return <h1>{status}</h1>;
 };
 export default function ShopList(props: ShopListProps) {
+  const mapApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY || "";
   const { shops, shopPositions, userPosition } = props;
   return (
     <Center w={"100%"}>
@@ -67,10 +68,7 @@ export default function ShopList(props: ShopListProps) {
               </Stack>
               <CardFooter>
                 <Box h={"100%"}>
-                  <Wrapper
-                    apiKey={"AIzaSyAUsgbJtYrh3G_hgHRfBndftkJqSQSEvNc"}
-                    render={render}
-                  >
+                  <Wrapper apiKey={mapApiKey} render={render}>
                     <ShopMap
                       style={{ height: "100%", aspectRatio: "3 / 2" }}
                       center={shopPositions[index]}

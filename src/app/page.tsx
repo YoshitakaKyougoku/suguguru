@@ -23,6 +23,7 @@ const render = (status: Status) => {
   return <h1>{status}</h1>;
 };
 export default function Home() {
+  const mapApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY || "";
   const { coords, error } = useGeolocation();
   const { shops, fetchAndSetShops } = useShopsData();
   useEffect(() => {
@@ -133,10 +134,7 @@ export default function Home() {
       <Box mx={"auto"}>
         <Center w={"100%"}>
           <Box w={"80%"}>
-            <Wrapper
-              apiKey={"AIzaSyAUsgbJtYrh3G_hgHRfBndftkJqSQSEvNc"}
-              render={render}
-            >
+            <Wrapper apiKey={mapApiKey} render={render}>
               <ShopMap
                 style={{ width: "100%", aspectRatio: "3 / 1" }}
                 center={shopPositions[0]}
