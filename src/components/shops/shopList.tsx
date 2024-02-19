@@ -72,7 +72,7 @@ export default function ShopList(props: ShopListProps) {
                     render={render}
                   >
                     <ShopMap
-                      style={{ height: "100%", aspectRatio: "1 / 1" }}
+                      style={{ height: "100%", aspectRatio: "3 / 2" }}
                       center={shopPositions[index]}
                     >
                       <Marker

@@ -138,9 +138,8 @@ export default function Home() {
               render={render}
             >
               <ShopMap
-                style={{ width: "100%", aspectRatio: "1 / 1" }}
+                style={{ width: "100%", aspectRatio: "3 / 1" }}
                 center={shopPositions[0]}
-                zoom={12.0}
               >
                 {/* <Marker position={userPosition} icon={'.././favicon.ico'}/> */}
                 {shops.results.shop.slice(0, 3).map((shop, index) => (
