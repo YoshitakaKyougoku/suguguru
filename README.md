@@ -1,36 +1,92 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 簡易仕様書
 
-## Getting Started
+### アプリ名
 
-First, run the development server:
+すぐグル
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### 公開したアプリの URL
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+https://suguguru.vercel.app/
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 該当プロジェクトのリポジトリ URL
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+https://github.com/YoshitakaKyougoku/suguguru
 
-## Learn More
+## 開発環境
 
-To learn more about Next.js, take a look at the following resources:
+### 開発環境
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+vsCode
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### 開発言語
 
-## Deploy on Vercel
+TypeScript
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 動作対象端末・OS
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### 動作対象 OS
+
+Google Chrome (ver.121.0.6167.160)
+
+## 開発期間
+
+14 日間
+
+## アプリケーション機能
+
+### 機能一覧
+
+- レストラン検索：ホットペッパーグルメサーチ API を使用して、現在地周辺の飲食店を検索する。
+- レストラン情報取得：ホットペッパーグルメサーチ API を使用して、飲食店の詳細情報を取得する。
+- GoogleMap 連携:：飲食店の所在地及びルートを GoogleMap で見られるようにする。
+
+### 画面一覧
+
+- 検索画面 ：条件を指定してレストランを検索する。
+- 一覧画面 ：検索結果の飲食店を一覧表示する。
+- 詳細画面 : 店の詳細情報を表示する
+
+### フレームワーク
+
+Next.js (ver.14.1.0)
+
+### 設計ドキュメント
+
+[画面遷移図](./screen-transition.puml)
+
+#### コンセプト
+
+近くの美味しいお店がすぐ見つかる
+
+#### こだわったポイント
+
+- Google Map のルート検索に直接リンクするようにした
+- 検索画面で TOP3 形式でおすすめを表示することで検索を介さなくても店の情報を知れるようにした
+
+### デザイン面でこだわったポイント
+
+- 検索画面の現在地からの距離の選択をスライダーにすることで視覚的にわかりやすくした
+- 暖色ベースのデザインにすることで食欲をそそるようにした
+
+### アドバイスして欲しいポイント
+
+- ほぼ全てクライアントサイドレンダリングになってしまっているのでサーバーサイドでの処理を増やしたい
+- ローディング画面をロードする必要のある部分だけ表示されるようにしたい
+
+### 自己評価
+
+- エラーハンドリングやロード画面の実装など細かいところまで詰められていない。
+
+- 基礎の部分で実力が足りない部分が多いので実装のスピードが遅かったと思う。
+
+- しかし、目標としていた GoogleMap との連携はできたのでその点は良かった。
+
+## 申し送り
+
+### 今後実装すべき機能
+
+- 詳細画面から一覧画面へ戻るボタン
+
+### わかっている不具合
+
+- データフェッチができない（検索結果が 0 件の時にロードし続けてしまう

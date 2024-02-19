@@ -1,0 +1,37 @@
+@startuml 画面遷移図
+hide empty description
+state 検索画面 {
+    state 検索ボタン
+    state TOP3 {
+        state GoogleMap1
+    }
+}
+state 一覧画面 {
+    state 店舗 {
+        state GoogleMap2 
+    }
+}
+state 詳細画面 {
+    state GoogleMap3 
+}
+
+検索画面 : 現在地からの距離で検索
+検索画面 : おすすめTOP3を表示
+
+一覧画面 : 検索した店舗の一覧を表示
+
+詳細画面 : 店舗の詳細を表示
+
+ルート検索 : ユーザーから店舗までのルート
+
+検索ボタン -down-> 一覧画面
+TOP3 -left[#blue]-> 詳細画面
+
+店舗 -left[#blue]-> 詳細画面
+
+
+GoogleMap1 -down[#red,dashed]-> ルート検索
+GoogleMap2 -down[#red,dashed]-> ルート検索
+GoogleMap3 -down[#red,dashed]-> ルート検索 
+
+@enduml
