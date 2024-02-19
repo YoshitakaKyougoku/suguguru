@@ -10,6 +10,7 @@ import {
   CardFooter,
   Stack,
   Spinner,
+  Badge,
 } from "@chakra-ui/react";
 import Search from "@/components/search/search";
 import { useShopsData } from "@/hooks/useShopsData";
@@ -122,7 +123,15 @@ export default function Home() {
                         {shop.name}
                       </Link>
                     </CardBody>
-                    <CardFooter>{shop.catch}</CardFooter>
+                    <CardFooter>
+                      <Badge mx={1} colorScheme="green">
+                        {shop.genre.name}
+                      </Badge>
+                      <Badge mx={1} colorScheme="red">
+                        {shop.budget.name}
+                      </Badge>
+                      {shop.catch}
+                    </CardFooter>
                   </Flex>
                 </Card>
               </Box>
