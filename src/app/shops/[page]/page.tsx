@@ -7,6 +7,7 @@ import { useParams, useSearchParams } from "next/navigation";
 import { useEffect, useMemo } from "react";
 import PageNation from "@/components/shops/pageNation";
 import ShopList from "@/components/shops/shopList";
+import { redirect } from "next/navigation";
 
 export default function Shops() {
   const searchParams = useSearchParams();
@@ -27,6 +28,9 @@ export default function Shops() {
     [lat, lng, range, page]
   );
 
+  if (!lat || !lng || !range) {
+    redirect("/");
+  }
   useEffect(() => {
     fetchAndSetShops(searchQuery);
   }, [fetchAndSetShops, searchQuery]);
