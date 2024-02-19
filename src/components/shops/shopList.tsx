@@ -60,6 +60,9 @@ export default function ShopList(props: ShopListProps) {
                     <Badge mx={1} colorScheme="green">
                       {shop.genre.name}
                     </Badge>
+                    <Badge mx={1} colorScheme="red">
+                      {shop.budget.name}
+                    </Badge>
                   </Heading>
                   <Stack></Stack>
                   <Text py="2">{shop.access}</Text>
