@@ -9,13 +9,9 @@ interface MarkerProps extends google.maps.MarkerOptions {
 }
 
 const Marker: React.FC<MarkerProps> = (options) => {
-  // console.log("icon");
-  // console.log(icon);
   console.log(options.position);
-  // console.log(options.name);
   const [marker, setMarker] = useState<google.maps.Marker>();
   const [infoWindow, setInfoWindow] = useState<google.maps.InfoWindow>();
-  // console.log(options.position?.lat);
   const windowContent = (
     <div>
       {options.title}
@@ -41,7 +37,7 @@ const Marker: React.FC<MarkerProps> = (options) => {
       setInfoWindow(new google.maps.InfoWindow());
     }
 
-    // remove marker from map on unmount
+    // unmount時にマーカーを削除
     return () => {
       if (marker) {
         marker.setMap(null);
@@ -52,7 +48,6 @@ const Marker: React.FC<MarkerProps> = (options) => {
   useEffect(() => {
     if (marker) {
       marker.setOptions(options);
-      // marker.setIcon(icon)
       infoWindow?.setContent(windowContentString);
       marker.addListener("click", () => {
         infoWindow?.open({

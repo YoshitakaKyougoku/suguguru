@@ -30,7 +30,7 @@ const ShopMap: React.FC<MapProps> = ({ children, style, ...options }) => {
       <div ref={ref} style={style} />
       {React.Children.map(children, (child) => {
         if (React.isValidElement(child)) {
-          // set the map prop on the child component
+          // 子コンポーネントにpropsを渡す
           // @ts-ignore
           return React.cloneElement(child, { map });
         }
